@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: rgb(80, 34, 34);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.urna {
+    background-color: rgb(224, 224, 224);
+    width: 65%;
+    height: 70%;
+}
