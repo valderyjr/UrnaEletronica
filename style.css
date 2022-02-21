@@ -67,6 +67,11 @@ main {
     border: none;
     box-shadow: 2px 4px 3px rgb(0, 0, 0);
     cursor: pointer;
+    transition: .5s;
+}
+
+.botao:hover {
+    transform: scale(1.15);
 }
 
 .botao-0 {
@@ -106,25 +111,16 @@ main {
 }
 @media screen and (max-width: 600px) {
     .urna {
-        height: 60%;
-        width: 98%;
-        gap: 0.5em;
-        padding: 0 .4em;
+        flex-direction: column;
+        width: 90%;
+        padding: 5px 1em;
     }
 
     .tela {
-        width: 50%;
+        width: 100%;
     }
 
     .entrada {
-        width: 50%;
-    }
-
-    .opcoes {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    #op-confirma {
-        grid-column: span 2;
+        width: 100%;
     }
 }
