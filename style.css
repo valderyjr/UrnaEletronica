@@ -8,6 +8,9 @@
 
 body {
     background-color: rgb(80, 34, 34);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 main {
@@ -35,6 +38,54 @@ main {
     height: 80%;
 }
 
+.titulo-tela {
+    margin-top: 10px;
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+
+.numeros {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    height: 25%;
+}
+
+.box {
+    border: 2px solid black;
+    width: 40px;
+    height: 40px;
+}
+
+.box--piscando {
+    animation: box-piscando .75s infinite;
+}
+
+@keyframes box-piscando {
+    0% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: .25;
+    }
+}
+
+.digito {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    height: 100%;
+}
+
+
 .entrada {
     height: 80%;
     width: 40%;
@@ -52,10 +103,11 @@ main {
     width: 80%;
     height: 60%;
     grid-column-gap: 10px;
+    grid-row-gap: 5px;
     justify-items: center;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .botao {
@@ -74,7 +126,8 @@ main {
     transform: scale(1.15);
 }
 
-.botao-0 {
+
+#btn-0 {
     grid-column-start: 2;
 }
 
@@ -90,6 +143,7 @@ main {
 }
 
 .opcao {
+    color: black;
     font-size: 1rem;
     font-weight: 700;
     height: 40px;
