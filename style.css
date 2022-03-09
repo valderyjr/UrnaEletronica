@@ -36,6 +36,7 @@ main {
     border: 2px solid black;
     width: 60%;
     height: 80%;
+    text-align: center;
 }
 
 .titulo-tela {
@@ -43,8 +44,40 @@ main {
     width: 100%;
     height: max-content;
     text-align: center;
+    box-sizing: border-box;
 }
 
+.retorno-politico {
+    width: 100%;
+    height: 45%;
+    box-sizing: border-box;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.fim-tela {
+    width: 100%;
+    height: max-content;
+    border-top: 3px solid black;
+    padding-left: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-align: left;
+}
+
+.texto-tela {
+    display: inline;
+}
+
+.negrito-tela {
+    display: inline;
+    font-weight: bold;
+}
+
+.info-voto {
+    display: inline-block;
+    height: fit-content;
+}
 .numeros {
     display: flex;
     gap: 2px;
@@ -58,24 +91,6 @@ main {
     border: 2px solid black;
     width: 40px;
     height: 40px;
-}
-
-.box--piscando {
-    animation: box-piscando .75s infinite;
-}
-
-@keyframes box-piscando {
-    0% {
-        opacity: .25;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: .25;
-    }
 }
 
 .digito {
@@ -168,6 +183,7 @@ main {
         flex-direction: column;
         width: 90%;
         padding: 5px 1em;
+        height: 90%;
     }
 
     .tela {
@@ -176,5 +192,9 @@ main {
 
     .entrada {
         width: 100%;
+    }
+
+    .retorno-politico {
+        height: 40%;
     }
 }
