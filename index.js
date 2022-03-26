@@ -162,9 +162,27 @@ function verificaPresidente(numeroTotal) {
     }
     if (nomePolitico.length > 0) {
         exibeDeputado(numeroPolitico, nomePolitico, partidoPolitico, cargoPolitico)
+        setTimeout(finalizaVoto, 3000)
     } else {
         alert ('VOTO INVÁLIDO!')
         limparCampos()
         limpaDeputado()
     }
 }
+
+function finalizaVoto() {
+    digitos.forEach((digito) => digito.textContent = '')
+    htmlNumeroPolitico.textContent = ''
+    htmlNomePolitico.textContent = ''
+    htmlNumeroPolitico.textContent = 'FIM DE ELEIÇÃO!'
+    htmlNumeroPolitico.style.fontSize = '30px'
+    htmlPartidoPolitico.textContent = ''
+    tituloTela.textContent = ''
+    document.querySelector('.fim-tela').style.display = 'none'
+    digitosBox.forEach(el => el.remove())
+    document.querySelector('.fim-eleicao').style.display = 'block'
+}
+
+document.querySelector('.fim-eleicao').addEventListener('click', function() {
+    window.location.reload()
+})

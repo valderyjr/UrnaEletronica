@@ -55,6 +55,20 @@ main {
     opacity: 0;
 }
 
+.fim-eleicao {
+    border: none;
+    background-color: rgb(80, 34, 34);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    height: 2em;
+    width: max-content;
+    padding: 0px 20px;
+    display: none;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
 .fim-tela {
     width: 100%;
     height: max-content;
@@ -181,14 +195,13 @@ main {
 @media screen and (max-width: 600px) {
     .urna {
         flex-direction: column;
-        width: 90%;
+        width: 92%;
         padding: 5px 1em;
-        height: 90%;
+        height: 98%;
     }
 
     .tela {
         width: 100%;
-        height: 90%;
     }
 
     .entrada {
@@ -198,4 +211,17 @@ main {
     .retorno-politico {
         height: 40%;
     }
+
+    .fim-tela {
+        font-size: 0.76em;
+    }
+
+    .opcoes {
+        width: auto;
+    }
+
+    .fim-eleicao {
+        font-size: 0.8em;
+    }
+
 }
