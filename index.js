@@ -1,9 +1,12 @@
 const btnDigito = document.getElementsByClassName('botao')
 const boxDigitos = document.getElementsByClassName('digito')
+const digitosBox = document.querySelectorAll('.box')
+const digitos = document.querySelectorAll('.digito')
 const htmlNumeroPolitico = document.getElementById('numero-politico')
 const htmlNomePolitico = document.getElementById('nome-politico')
 const htmlPartidoPolitico = document.getElementById('partido-politico')
 const boxRetornoPolitico = document.getElementsByClassName('retorno-politico')[0]
+const tituloTela = document.querySelector('.titulo-tela')
 let numeroTotal = ''
 let nomePolitico = ''
 let cargoPolitico = ''
@@ -22,7 +25,7 @@ const btnCorrige = document.getElementById('op-corrige')
 btnCorrige.addEventListener('click', function() {
     let verificaCorrecao = verificaCorrige()
     if (verificaCorrecao != false) {
-        for (let i = 3; i >= 0; i--) {
+        for (let i = (document.querySelectorAll('.box').length - 1); i >= 0; i--) {
             let valorBox = boxDigitos[i].innerHTML;
             if (valorBox.length > 0) {
                 boxDigitos[i].innerHTML = '' 
@@ -37,16 +40,21 @@ btnCorrige.addEventListener('click', function() {
 const btnConfirma = document.getElementById('op-confirma')
 btnConfirma.addEventListener('click', function () {
     numeroTotal = ''
-    for (let contaNumeros = 0; contaNumeros < 4; contaNumeros ++) {
+    for (let contaNumeros = 0; contaNumeros < document.querySelectorAll('.box').length; contaNumeros ++) {
         let valorBox = boxDigitos[contaNumeros].innerHTML
         numeroTotal+= valorBox
     }
-    if (numeroTotal.length != 4) {
+    if (numeroTotal.length != document.querySelectorAll('.box').length) {
         alert('Você ainda não digitou todos os números!')
         limparCampos()
         votarNulo()
     } else {
-        verificaDeputado(numeroTotal)
+        if (tituloTela.textContent === 'Deputado Federal') {
+            verificaDeputado(numeroTotal)
+        } else if (tituloTela.textContent === 'Presidente') {
+            verificaPresidente(numeroTotal)
+        }
+        
 
     }
 })
@@ -71,7 +79,7 @@ function verificaCorrige() {
 }
 
 function insereDigito (numero) {
-    for (let cont = 0; cont < 4; cont++) {
+    for (let cont = 0; cont < document.querySelectorAll('.box').length; cont++) {
         let digitoBox = boxDigitos[cont].innerHTML
         if (digitoBox.length < 1) {
             boxDigitos[cont].innerHTML = numero
@@ -81,7 +89,7 @@ function insereDigito (numero) {
 }
 
 function limparCampos () {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < document.querySelectorAll('.box').length; i++) {
         boxDigitos[i].innerHTML = ''
     }
 }
@@ -94,11 +102,11 @@ function verificaDeputado (numeroTotal) {
             numeroPolitico = deputados[cont].numero
             cargoPolitico = deputados[cont].cargo
             partidoPolitico = deputados[cont].partido
-            // return exibeDeputado(nomePolitico, numeroPolitico, cargoPolitico, partidoPolitico)
         }
     }
     if (nomePolitico.length > 0) {
         exibeDeputado(numeroPolitico, nomePolitico, partidoPolitico, cargoPolitico)
+        setTimeout(alterna, 3000)
     } else {
         alert ('VOTO INVÁLIDO!')
         limparCampos()
@@ -128,4 +136,35 @@ function votarNulo() {
     htmlNumeroPolitico.style.fontSize = '40px'
     htmlNomePolitico.innerHTML = ''
     htmlPartidoPolitico.innerHTML = ''
+}
+
+const alterna = function mudaTela() {
+    digitos.forEach((digito) => digito.textContent = '')
+    htmlNumeroPolitico.textContent = ''
+    htmlNomePolitico.textContent = ''
+    htmlPartidoPolitico.textContent = ''
+    tituloTela.textContent = 'Presidente'
+    digitosBox.forEach(function (el, i) {
+        if (i>1) {
+            return el.remove()}
+    })
+}
+
+function verificaPresidente(numeroTotal) {
+    nomePolitico = ''
+    for (let cont = 0; cont < 2; cont++) {
+        if (numeroTotal == presidentes[cont].numero) {
+            nomePolitico = presidentes[cont].nome
+            numeroPolitico = presidentes[cont].numero
+            cargoPolitico = presidentes[cont].cargo
+            partidoPolitico = presidentes[cont].partido
+        }
+    }
+    if (nomePolitico.length > 0) {
+        exibeDeputado(numeroPolitico, nomePolitico, partidoPolitico, cargoPolitico)
+    } else {
+        alert ('VOTO INVÁLIDO!')
+        limparCampos()
+        limpaDeputado()
+    }
 }
